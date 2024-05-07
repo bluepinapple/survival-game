@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="MetaUpgrade" load_steps=2 format=3 uid="uid://7bmth115l5rv"]
+
+[ext_resource type="Script" path="res://resources/meta_upgrades/meta_upgrade.gd" id="1_qrkqc"]
+
+[resource]
+script = ExtResource("1_qrkqc")
+id = "sword_meta_damage"
+max_quantity = 20
+exprience_cost = 200
+title = "初始伤害↑"
+description = "初始武器的初始伤害+1"

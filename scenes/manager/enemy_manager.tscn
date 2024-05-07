@@ -1,0 +1,23 @@
+[gd_scene load_steps=8 format=3 uid="uid://l225pniqjy7t"]
+
+[ext_resource type="Script" path="res://scenes/manager/enemy_manager.gd" id="1_ev0du"]
+[ext_resource type="PackedScene" uid="uid://dvfvrjlttc8a6" path="res://scenes/game_object/wizard_enemy/wizard_enemy.tscn" id="2_kk5lw"]
+[ext_resource type="PackedScene" uid="uid://colr1sye23sd2" path="res://scenes/game_object/basic_enemy/basic_enemy.tscn" id="2_xfwnw"]
+[ext_resource type="PackedScene" uid="uid://d4dv3ij7b3w5v" path="res://scenes/game_object/mouse_enemy/mouse_enemy.tscn" id="4_4hrnu"]
+[ext_resource type="PackedScene" uid="uid://cq36clpdnr6ha" path="res://scenes/game_object/ghost_enemy/ghost_enemy.tscn" id="5_oqoxq"]
+[ext_resource type="PackedScene" uid="uid://cfbbn2j7kce0x" path="res://scenes/game_object/treasure_chest_enemy/treasure_chest_enemy.tscn" id="6_75hw4"]
+[ext_resource type="PackedScene" uid="uid://eiucawkuafne" path="res://scenes/game_object/meta_wizard_enemy/meta_wizard_enemy.tscn" id="7_gx816"]
+
+[node name="EnemyManager" type="Node"]
+script = ExtResource("1_ev0du")
+basic_enemy_scenes = ExtResource("2_xfwnw")
+wizard_enemy_scene = ExtResource("2_kk5lw")
+mouse_enemy_scene = ExtResource("4_4hrnu")
+ghost_enemy_scene = ExtResource("5_oqoxq")
+treasure_chest_enemy = ExtResource("6_75hw4")
+meta_wizard_enemy_scene = ExtResource("7_gx816")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.6
+one_shot = true
+autostart = true

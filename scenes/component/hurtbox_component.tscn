@@ -1,0 +1,17 @@
+[gd_scene load_steps=8 format=3 uid="uid://cbq5u5mv12hvn"]
+
+[ext_resource type="Script" path="res://scenes/component/hurtbox_component.gd" id="1_sh74o"]
+[ext_resource type="PackedScene" uid="uid://dl3sgi2ylaulg" path="res://scenes/component/random_audio_stream_player_2d_component.tscn" id="2_jjsgt"]
+[ext_resource type="AudioStream" uid="uid://byxdp3vipu4qt" path="res://assets/audio/footstep_carpet_000.ogg" id="3_spbfl"]
+[ext_resource type="AudioStream" uid="uid://c83hpp8dhpu5f" path="res://assets/audio/footstep_carpet_001.ogg" id="4_2uge1"]
+[ext_resource type="AudioStream" uid="uid://cer34sek001e4" path="res://assets/audio/footstep_carpet_002.ogg" id="5_koy7v"]
+[ext_resource type="AudioStream" uid="uid://bwugxvrufd80o" path="res://assets/audio/footstep_carpet_003.ogg" id="6_6kxyq"]
+[ext_resource type="AudioStream" uid="uid://4ennlaehkkvx" path="res://assets/audio/footstep_carpet_004.ogg" id="7_p1xhm"]
+
+[node name="HurtboxComponent" type="Area2D"]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_sh74o")
+
+[node name="RandomAudioStreamPlayer2DComponent" parent="." instance=ExtResource("2_jjsgt")]
+streams = Array[AudioStream]([ExtResource("3_spbfl"), ExtResource("4_2uge1"), ExtResource("5_koy7v"), ExtResource("6_6kxyq"), ExtResource("7_p1xhm")])

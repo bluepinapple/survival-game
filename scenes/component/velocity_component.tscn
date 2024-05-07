@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bb1n4fv217n0r"]
+
+[ext_resource type="Script" path="res://scenes/component/velocity_component.gd" id="1_py6mm"]
+
+[node name="VelocityComponent" type="Node"]
+script = ExtResource("1_py6mm")
+max_speed = 400
+acceleration = 5.0

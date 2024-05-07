@@ -1,0 +1,193 @@
+[gd_scene load_steps=19 format=3 uid="uid://cq36clpdnr6ha"]
+
+[ext_resource type="Script" path="res://scenes/game_object/ghost_enemy/ghost_enemy.gd" id="1_lm564"]
+[ext_resource type="PackedScene" uid="uid://1eb4c2a8e7v0" path="res://scenes/component/health_component.tscn" id="2_k56hc"]
+[ext_resource type="PackedScene" uid="uid://cp8vnkqe3a3id" path="res://scenes/component/death_component.tscn" id="3_oc0wr"]
+[ext_resource type="PackedScene" uid="uid://bb1n4fv217n0r" path="res://scenes/component/velocity_component.tscn" id="4_f8nde"]
+[ext_resource type="PackedScene" uid="uid://n1auteb125hu" path="res://scenes/component/vial_drop_component.tscn" id="5_r1e2t"]
+[ext_resource type="PackedScene" uid="uid://cwj5a1t2d4jlq" path="res://scenes/component/hit_flash_component.tscn" id="6_6cd3w"]
+[ext_resource type="PackedScene" uid="uid://cbq5u5mv12hvn" path="res://scenes/component/hurtbox_component.tscn" id="7_bwapj"]
+[ext_resource type="Texture2D" uid="uid://bkplgvul8fv52" path="res://scenes/game_object/ghost_enemy/tile_0121.png" id="8_qojh5"]
+[ext_resource type="Texture2D" uid="uid://bew0y4a31e74" path="res://scenes/game_object/ghost_enemy/tile_0121-export.png" id="9_frvx6"]
+
+[sub_resource type="Animation" id="Animation_o5kvq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ihjh3"]
+resource_name = "walk"
+length = 1.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8, 1.3, 1.5),
+"transitions": PackedFloat32Array(1, 1.68179, 0.574349, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -6), Vector2(0, 4), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.8, 1.3, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.9, 1.08), Vector2(1.05, 0.95), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jts7g"]
+_data = {
+"RESET": SubResource("Animation_o5kvq"),
+"walk": SubResource("Animation_ihjh3")
+}
+
+[sub_resource type="Animation" id="Animation_estka"]
+resource_name = "invisible"
+length = 6.0
+loop_mode = 1
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HurtboxComponent/HurtCollision:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3, 6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2.5, 3, 5.5, 6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.215686), Color(1, 1, 1, 0.215686), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_stvoi"]
+_data = {
+"invisible": SubResource("Animation_estka")
+}
+
+[sub_resource type="Shader" id="Shader_hjy6c"]
+resource_local_to_scene = true
+code = "shader_type canvas_item;
+
+uniform float lerp_percent : hint_range(0.0, 1.0);
+
+void vertex() {
+	// Called for every vertex the material is visible on.
+}
+
+void fragment() {
+	vec4 texture_color = texture(TEXTURE,UV);
+	vec4 final_color = mix(texture_color,vec4(1.0,1.0,1.0,texture_color.a),lerp_percent);
+	COLOR = final_color;
+}
+
+//void light() {
+	// Called for every pixel for every light affecting the CanvasItem.
+	// Uncomment to replace the default light processing function with this one.
+//}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y3t8h"]
+resource_local_to_scene = true
+shader = SubResource("Shader_hjy6c")
+shader_parameter/lerp_percent = 0.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gby1h"]
+radius = 8.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jvvl8"]
+radius = 4.0
+
+[node name="GhostEnemy" type="CharacterBody2D" groups=["enemy"]]
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("1_lm564")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_jts7g")
+}
+autoplay = "walk"
+
+[node name="InvisibleAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_stvoi")
+}
+autoplay = "invisible"
+
+[node name="HealthComponent" parent="." instance=ExtResource("2_k56hc")]
+max_health = 40.0
+
+[node name="DeathComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("3_oc0wr")]
+health_component = NodePath("../HealthComponent")
+sprite = NodePath("../Visuals/Sprite2D")
+
+[node name="VelocityComponent" parent="." instance=ExtResource("4_f8nde")]
+max_speed = 90
+acceleration = 8.0
+
+[node name="VialDropComponent" parent="." node_paths=PackedStringArray("helath_component") instance=ExtResource("5_r1e2t")]
+drop_perenct = 0.7
+helath_component = NodePath("../HealthComponent")
+
+[node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("6_6cd3w")]
+health_component = NodePath("../HealthComponent")
+sprite = NodePath("../Visuals/Sprite2D")
+hit_flash_material = SubResource("ShaderMaterial_y3t8h")
+
+[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("7_bwapj")]
+health_component = NodePath("../HealthComponent")
+
+[node name="HurtCollision" type="CollisionShape2D" parent="HurtboxComponent"]
+unique_name_in_owner = true
+position = Vector2(0, -7)
+scale = Vector2(1.44186, 1.44186)
+shape = SubResource("CircleShape2D_gby1h")
+
+[node name="Visuals" type="Node2D" parent="."]
+position = Vector2(0, -3.12252)
+
+[node name="Sprite2D" type="Sprite2D" parent="Visuals"]
+visible = false
+texture = ExtResource("8_qojh5")
+offset = Vector2(0, -8)
+
+[node name="invisible" type="Sprite2D" parent="Visuals"]
+position = Vector2(0, 0.00921824)
+scale = Vector2(0.997088, 1.00291)
+texture = ExtResource("9_frvx6")
+offset = Vector2(0, -8)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(0, -4)
+shape = SubResource("CircleShape2D_jvvl8")

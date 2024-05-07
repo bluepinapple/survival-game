@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="MetaUpgrade" load_steps=2 format=3 uid="uid://cilftw74gumyb"]
+
+[ext_resource type="Script" path="res://resources/meta_upgrades/meta_upgrade.gd" id="1_gx205"]
+
+[resource]
+script = ExtResource("1_gx205")
+id = "start_exprience"
+max_quantity = 7
+exprience_cost = 500
+title = "初始经验"
+description = "每次游戏开始自带初始经验+1"

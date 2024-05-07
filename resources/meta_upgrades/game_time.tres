@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="MetaUpgrade" load_steps=2 format=3 uid="uid://boiqwfuvc3tke"]
+
+[ext_resource type="Script" path="res://resources/meta_upgrades/meta_upgrade.gd" id="1_ae7y0"]
+
+[resource]
+script = ExtResource("1_ae7y0")
+id = "game_time"
+max_quantity = 10
+exprience_cost = 1000
+title = "游戏时长↑"
+description = "一局游戏获胜所需时间延长1分钟"
