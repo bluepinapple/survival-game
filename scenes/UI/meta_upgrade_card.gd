@@ -33,7 +33,7 @@ func update_progress():
 	var percent = currency / upgrade.exprience_cost
 	percent = min(percent,1)
 	progress_bar.value = percent
-	#purchase_button.disabled = percent < 1 || is_maxed
+	purchase_button.disabled = percent < 1 || is_maxed
 	if is_maxed:
 		purchase_button.text = "售罄"
 	progress_label.text = str(currency)+"/"+str(upgrade.exprience_cost)
