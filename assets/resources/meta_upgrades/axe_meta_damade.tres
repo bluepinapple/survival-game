@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="MetaUpgrade" load_steps=2 format=3 uid="uid://batmuqf2oudrd"]
+
+[ext_resource type="Script" path="res://resources/meta_upgrades/meta_upgrade.gd" id="1_bfx81"]
+
+[resource]
+script = ExtResource("1_bfx81")
+id = "axe_meta_damage"
+max_quantity = 10
+exprience_cost = 300
+title = "斧头伤害↑"
+description = "斧头的初始伤害+1"

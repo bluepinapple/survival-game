@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AbilityUpgrade" load_steps=2 format=3 uid="uid://bqk08stc26kst"]
+
+[ext_resource type="Script" path="res://resources/upgrades/ability_upgrade.gd" id="1_syxfe"]
+
+[resource]
+script = ExtResource("1_syxfe")
+id = "axe_being_time_up"
+name = "【斧头】持久↑"
+max_quantity = 10
+description = "斧头的持续时间更长"

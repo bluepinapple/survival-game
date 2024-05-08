@@ -1,0 +1,36 @@
+[gd_scene load_steps=10 format=3 uid="uid://bwvwg828dsssp"]
+
+[ext_resource type="Script" path="res://scenes/game_object/exprience_vial/exprience_vial.gd" id="1_6lbol"]
+[ext_resource type="Texture2D" uid="uid://b2wcmmtvlk83d" path="res://scenes/game_object/exprience_vial/exprience_vial.png" id="2_5fu7a"]
+[ext_resource type="PackedScene" uid="uid://dl3sgi2ylaulg" path="res://scenes/component/random_audio_stream_player_2d_component.tscn" id="2_owusu"]
+[ext_resource type="AudioStream" uid="uid://dxpfca2w80w8c" path="res://assets/audio/impactGeneric_light_000.ogg" id="3_7cmji"]
+[ext_resource type="AudioStream" uid="uid://bmhsxsadcmnex" path="res://assets/audio/impactGeneric_light_001.ogg" id="4_p110c"]
+[ext_resource type="AudioStream" uid="uid://j5msqpb8c24b" path="res://assets/audio/impactGeneric_light_002.ogg" id="5_krku3"]
+[ext_resource type="AudioStream" uid="uid://bdqf8qicealmg" path="res://assets/audio/impactGeneric_light_003.ogg" id="6_t2l5f"]
+[ext_resource type="AudioStream" uid="uid://owj31hp0lccp" path="res://assets/audio/impactGeneric_light_004.ogg" id="7_vrwnx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nmj2i"]
+radius = 12.0
+
+[node name="ExprienceVial" type="Node2D" groups=["exprience_vial"]]
+script = ExtResource("1_6lbol")
+
+[node name="RandomAudioStreamPlayer2DComponent" parent="." instance=ExtResource("2_owusu")]
+streams = Array[AudioStream]([ExtResource("3_7cmji"), ExtResource("4_p110c"), ExtResource("5_krku3"), ExtResource("6_t2l5f"), ExtResource("7_vrwnx")])
+
+[node name="PlayerPickupArea2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerPickupArea2D"]
+shape = SubResource("CircleShape2D_nmj2i")
+
+[node name="ChestPickupArea2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ChestPickupArea2D"]
+shape = SubResource("CircleShape2D_nmj2i")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_5fu7a")

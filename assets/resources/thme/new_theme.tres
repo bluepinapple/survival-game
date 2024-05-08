@@ -1,0 +1,113 @@
+[gd_resource type="Theme" load_steps=14 format=3 uid="uid://cl8lmwy5qe7cf"]
+
+[ext_resource type="Texture2D" uid="uid://b47iy1jg5kln0" path="res://assets/UI/survailu2i.png" id="1_7s0gp"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_f1gl7"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+texture = ExtResource("1_7s0gp")
+texture_margin_left = 1.0
+texture_margin_top = 1.0
+texture_margin_right = 1.0
+texture_margin_bottom = 1.0
+region_rect = Rect2(57, 7, 18, 18)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_o7pvk"]
+texture = ExtResource("1_7s0gp")
+texture_margin_left = 1.0
+texture_margin_top = 1.0
+texture_margin_right = 1.0
+texture_margin_bottom = 1.0
+region_rect = Rect2(57, 7, 18, 18)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hfbqu"]
+texture_margin_left = 1.0
+texture_margin_top = 1.0
+texture_margin_right = 1.0
+texture_margin_bottom = 1.0
+region_rect = Rect2(57, 7, 18, 18)
+draw_center = false
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hhh4y"]
+texture = ExtResource("1_7s0gp")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+region_rect = Rect2(25, 42, 8, 8)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6m6e3"]
+texture = ExtResource("1_7s0gp")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+region_rect = Rect2(62, 42, 8, 8)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_u4a50"]
+size = Vector2(0, 0)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_hj6or"]
+size = Vector2(0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6vvup"]
+bg_color = Color(0.458824, 0.890196, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8, 0.8, 0.8, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_omv5n"]
+bg_color = Color(0.458824, 0.890196, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8, 0.8, 0.8, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wc7vb"]
+content_margin_left = 2.0
+content_margin_top = 6.0
+content_margin_right = 2.0
+content_margin_bottom = 6.0
+bg_color = Color(0.247059, 0.14902, 0.192157, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1b4gw"]
+texture = ExtResource("1_7s0gp")
+texture_margin_left = 4.0
+texture_margin_top = 6.0
+texture_margin_right = 4.0
+texture_margin_bottom = 3.0
+region_rect = Rect2(18, 5, 22, 22)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s5cyj"]
+bg_color = Color(0.247059, 0.14902, 0.192157, 1)
+
+[resource]
+AlternatePanelContainer/base_type = &"PanelContainer"
+AlternatePanelContainer/styles/panel = SubResource("StyleBoxTexture_f1gl7")
+BlueOutlineLabel/base_type = &"Label"
+BlueOutlineLabel/colors/font_shadow_color = Color(0.219608, 0.207843, 0.333333, 1)
+BlueOutlineLabel/constants/shadow_offset_x = 1
+BlueOutlineLabel/constants/shadow_offset_y = 1
+Button/colors/font_color = Color(0.247059, 0.14902, 0.192157, 1)
+Button/colors/font_disabled_color = Color(0.219608, 0.207843, 0.333333, 1)
+Button/colors/font_focus_color = Color(0.247059, 0.14902, 0.192157, 1)
+Button/colors/font_hover_color = Color(0.247059, 0.14902, 0.192157, 1)
+Button/colors/font_hover_pressed_color = Color(0.247059, 0.14902, 0.192157, 1)
+Button/colors/font_pressed_color = Color(0.247059, 0.14902, 0.192157, 1)
+Button/styles/disabled = SubResource("StyleBoxTexture_o7pvk")
+Button/styles/focus = SubResource("StyleBoxTexture_hfbqu")
+Button/styles/hover = SubResource("StyleBoxTexture_hhh4y")
+Button/styles/normal = SubResource("StyleBoxTexture_6m6e3")
+HSlider/icons/grabber = SubResource("PlaceholderTexture2D_u4a50")
+HSlider/icons/grabber_highlight = SubResource("PlaceholderTexture2D_hj6or")
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_6vvup")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_omv5n")
+HSlider/styles/slider = SubResource("StyleBoxFlat_wc7vb")
+Label/constants/line_spacing = 0
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_1b4gw")
+ProgressBar/styles/background = SubResource("StyleBoxFlat_s5cyj")

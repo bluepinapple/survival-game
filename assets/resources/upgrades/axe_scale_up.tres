@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AbilityUpgrade" load_steps=2 format=3 uid="uid://cvvghvdvhe5gc"]
+
+[ext_resource type="Script" path="res://resources/upgrades/ability_upgrade.gd" id="1_e6ipa"]
+
+[resource]
+script = ExtResource("1_e6ipa")
+id = "axe_scale_up"
+name = "【斧头】变大"
+max_quantity = 5
+description = "斧头变得更大"

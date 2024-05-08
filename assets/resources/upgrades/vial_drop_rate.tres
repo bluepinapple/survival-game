@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AbilityUpgrade" load_steps=2 format=3 uid="uid://bglc6bfd6el6"]
+
+[ext_resource type="Script" path="res://resources/upgrades/ability_upgrade.gd" id="1_chkmm"]
+
+[resource]
+script = ExtResource("1_chkmm")
+id = "vial_drop_rate"
+name = "掉率↑"
+max_quantity = 5
+description = "增加经验瓶的掉落概率"

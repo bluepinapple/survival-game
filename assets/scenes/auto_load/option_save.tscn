@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cjt7v3ygho53y"]
+
+[ext_resource type="Script" path="res://scenes/auto_load/OptionSave.gd" id="1_vyt16"]
+
+[node name="OptionSave" type="Node"]
+script = ExtResource("1_vyt16")

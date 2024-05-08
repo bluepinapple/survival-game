@@ -1,0 +1,265 @@
+[gd_scene load_steps=30 format=3 uid="uid://difkj3kp0ylx0"]
+
+[ext_resource type="Script" path="res://scenes/game_object/player/character_body_2d.gd" id="1_ueg6i"]
+[ext_resource type="PackedScene" uid="uid://c6kwhtibkubmv" path="res://scenes/ability/sword_ability_controller/sword_ability_controller.tscn" id="2_5bm8g"]
+[ext_resource type="Texture2D" uid="uid://ds2oehlqlh6vr" path="res://assets/player/tile_0096.png" id="2_w6xmt"]
+[ext_resource type="PackedScene" uid="uid://cwj5a1t2d4jlq" path="res://scenes/component/hit_flash_component.tscn" id="5_og5tf"]
+[ext_resource type="Shader" path="res://scenes/component/hit_flash_component.gdshader" id="6_7bb5b"]
+[ext_resource type="PackedScene" uid="uid://d15pu0pb0uf6" path="res://scenes/component/player_health_component.tscn" id="6_e2deu"]
+[ext_resource type="PackedScene" uid="uid://bl4jsxa3bmad0" path="res://scenes/manager/exprience_manager.tscn" id="6_yr6jh"]
+[ext_resource type="Script" path="res://scenes/game_object/player/Exprience_Bar.gd" id="7_a6dro"]
+[ext_resource type="PackedScene" uid="uid://dl3sgi2ylaulg" path="res://scenes/component/random_audio_stream_player_2d_component.tscn" id="9_mmw2n"]
+[ext_resource type="AudioStream" uid="uid://xen4bx4blkrt" path="res://assets/audio/impactMining_000.ogg" id="10_4ngue"]
+[ext_resource type="AudioStream" uid="uid://cq3beym4lod7y" path="res://assets/audio/impactMining_001.ogg" id="11_sjlh7"]
+[ext_resource type="AudioStream" uid="uid://cysixgtj2iy1b" path="res://assets/audio/impactMining_002.ogg" id="12_p8vl1"]
+[ext_resource type="AudioStream" uid="uid://dmy7ajpdq0knb" path="res://assets/audio/impactMining_003.ogg" id="13_qnrry"]
+[ext_resource type="AudioStream" uid="uid://ilt10d12xnq6" path="res://assets/audio/impactMining_004.ogg" id="14_3iaee"]
+[ext_resource type="Texture2D" uid="uid://bqh465nxlcjni" path="res://assets/particle/heal_particle.png" id="15_443hm"]
+
+[sub_resource type="Animation" id="Animation_7xpqy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals/Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Visuals/Sprite2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_resxy"]
+resource_name = "walk"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/Sprite2D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -4), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals/Sprite2D:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.261799, 0.261799, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Visuals/Sprite2D:scale")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 2.54912, 2.37841, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.9, 1.2), Vector2(1.2, 0.9), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_if6u6"]
+_data = {
+"RESET": SubResource("Animation_7xpqy"),
+"walk": SubResource("Animation_resxy")
+}
+
+[sub_resource type="Animation" id="Animation_3n53v"]
+resource_name = "plz_press_e"
+loop_mode = 1
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ht4a0"]
+_data = {
+"plz_press_e": SubResource("Animation_3n53v")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dg5n0"]
+resource_local_to_scene = true
+shader = ExtResource("6_7bb5b")
+shader_parameter/lerp_percent = 0.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ygacd"]
+bg_color = Color(0.262745, 0.882353, 0.701961, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.247059, 0.14902, 0.192157, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cu4qy"]
+bg_color = Color(0.458824, 0.890196, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.247059, 0.14902, 0.192157, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1e6xm"]
+radius = 30.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_te6w5"]
+radius = 7.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uwkx0"]
+
+[sub_resource type="Curve" id="Curve_l4vg7"]
+_data = [Vector2(0.00338983, 0.964432), 0.0, 0.354476, 0, 0, Vector2(1, 0.0752394), -2.08307, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_auacj"]
+curve = SubResource("Curve_l4vg7")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lpxto"]
+lifetime_randomness = 0.45
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(0, -2, 0)
+emission_shape = 2
+emission_sphere_radius = 8.95
+direction = Vector3(0, -1, 0)
+spread = 10.0
+initial_velocity_min = 20.0
+initial_velocity_max = 30.0
+gravity = Vector3(0, -10, 0)
+scale_curve = SubResource("CurveTexture_auacj")
+
+[node name="player" type="CharacterBody2D" groups=["player"]]
+collision_layer = 0
+motion_mode = 1
+script = ExtResource("1_ueg6i")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_if6u6")
+}
+
+[node name="UpgradeAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ht4a0")
+}
+autoplay = "plz_press_e"
+
+[node name="Abilities" type="Node" parent="."]
+
+[node name="SwordAbilityController" parent="Abilities" instance=ExtResource("2_5bm8g")]
+
+[node name="ExprienceManager" parent="." instance=ExtResource("6_yr6jh")]
+
+[node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("5_og5tf")]
+health_component = NodePath("../PlayerHealthComponent")
+sprite = NodePath("../Visuals/Sprite2D")
+hit_flash_material = SubResource("ShaderMaterial_dg5n0")
+
+[node name="PlayerHealthComponent" parent="." instance=ExtResource("6_e2deu")]
+max_health = 10.0
+
+[node name="DamageIntervalTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+custom_minimum_size = Vector2(32, 6)
+offset_left = -16.0
+offset_top = 4.0
+offset_right = 16.0
+offset_bottom = 10.0
+pivot_offset = Vector2(16, 3)
+theme_override_styles/fill = SubResource("StyleBoxFlat_ygacd")
+max_value = 1.0
+value = 0.5
+show_percentage = false
+
+[node name="Exprience_Bar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 6)
+offset_left = -16.0
+offset_top = 11.0
+offset_right = 16.0
+offset_bottom = 17.0
+size_flags_vertical = 1
+theme_override_styles/fill = SubResource("StyleBoxFlat_cu4qy")
+max_value = 1.0
+value = 0.5
+show_percentage = false
+script = ExtResource("7_a6dro")
+metadata/_edit_use_anchors_ = true
+
+[node name="PickupArea2D" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupArea2D"]
+position = Vector2(0, -5)
+shape = SubResource("CircleShape2D_1e6xm")
+
+[node name="Visuals" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Visuals"]
+texture = ExtResource("2_w6xmt")
+offset = Vector2(0, -8)
+
+[node name="CollisionArea2D" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 72
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionArea2D"]
+visible = false
+position = Vector2(0, -7)
+shape = SubResource("CircleShape2D_te6w5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, -5)
+scale = Vector2(0.5, 0.5)
+shape = SubResource("CircleShape2D_uwkx0")
+
+[node name="RandomAudioStreamPlayer2DComponent" parent="." instance=ExtResource("9_mmw2n")]
+streams = Array[AudioStream]([ExtResource("10_4ngue"), ExtResource("11_sjlh7"), ExtResource("12_p8vl1"), ExtResource("13_qnrry"), ExtResource("14_3iaee")])
+
+[node name="HealingParticle" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 16
+amount_ratio = 0.6
+process_material = SubResource("ParticleProcessMaterial_lpxto")
+texture = ExtResource("15_443hm")
+lifetime = 0.8
+one_shot = true
+randomness = 0.42

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AbilityUpgrade" load_steps=2 format=3 uid="uid://dnycjy2fjw266"]
+
+[ext_resource type="Script" path="res://resources/upgrades/ability_upgrade.gd" id="1_3mkh8"]
+
+[resource]
+script = ExtResource("1_3mkh8")
+id = "sword_scale_up"
+name = "【剑】变大"
+max_quantity = 5
+description = "剑变得更大"
